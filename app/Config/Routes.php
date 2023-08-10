@@ -20,6 +20,9 @@ $routes->set404Override();
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
 $routes->setAutoRoute(true);
+ 
+
+// example.com/shop/product/
 
 /*
  * --------------------------------------------------------------------
@@ -29,7 +32,24 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('home/index', 'Home::index');
+// $routes->get('/', 'Home::index');
+
+$routes->add('product/(:any)/(:any)', 'Shop::product/$1/$2');
+
+// admin routes 
+
+$routes->group('admin', function ($routes) {
+    $routes->add('user', 'Admin\Users::index');
+    $routes->add('users', 'Admin\Users::getAllUsers');
+    $routes->add('product/(:any)/(:any)', 'Admin\Shop::product/$1/$2');
+    
+    
+    // blog routes 
+    $routes->add('blog', 'Admin\Blog::index');
+    $routes->get('blog/new', 'Admin\Blog::createNew');
+    $routes->post('blog/new', 'Admin\Blog::saveBlog'); 
+});
+
 
 /*
  * --------------------------------------------------------------------

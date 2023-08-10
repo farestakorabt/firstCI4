@@ -1,11 +1,20 @@
-<?php
+<?php namespace App\Controllers;
 
-namespace App\Controllers;
+use App\Controllers\Admin\Shop as AdminShop;
 
 class Home extends BaseController
 {
     public function index()
     {
-        echo view('Home/index');
+        return view('Home/index');
+    }
+
+    public function validation() 
+    {
+        $shop = new Shop();
+        echo $shop->product('laptop', 'lenovo');
+        
+        $adminShop = new AdminShop();
+        echo $adminShop->product('PC', 'Sony');
     }
 }
