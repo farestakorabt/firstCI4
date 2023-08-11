@@ -38,17 +38,28 @@ $routes->add('product/(:any)/(:any)', 'Shop::product/$1/$2');
 
 // admin routes 
 
+// Group of routes under the 'admin' namespace
 $routes->group('admin', function ($routes) {
+    // Route to display user index
     $routes->add('user', 'Admin\Users::index');
+
+    // Route to get all users
     $routes->add('users', 'Admin\Users::getAllUsers');
+
+    // Route to display a specific product using two route parameters
     $routes->add('product/(:any)/(:any)', 'Admin\Shop::product/$1/$2');
     
-    
-    // blog routes 
+    // Blog routes
+    // Route to display the blog index
     $routes->add('blog', 'Admin\Blog::index');
+    
+    // Route to display a form for creating a new blog post
     $routes->get('blog/new', 'Admin\Blog::createNew');
+    
+    // Route to handle the submission of a new blog post
     $routes->post('blog/new', 'Admin\Blog::saveBlog'); 
 });
+
 
 
 /*

@@ -1,23 +1,25 @@
 
+<?= $this->extend('layouts/main') ?>
+
+<?= $this->section('content') ?>
 
 
 <h1><?= $title ?></h1>
 
-<div>
+<div class="row">
+    <?= $this->include('partials/sidebar') ?>
 
-    <?php foreach($posts as $post) : ?>
+    <div class="col-12 col-sm-8 mb-4">
 
-        <div>
-            <h3><?= $post ?></h3>
-            <img src="/assets/images/cartman.png" style='width:200px; height:auto;' alt="cartman">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Alias natus corporis nisi repudiandae. Doloribus repellat natus dolores 
-                exercitationem aspernatur nesciunt voluptates ad soluta eum reiciendis 
-                adipisci ratione quibusdam, temporibus aperiam!</p>
+        <div class="row">
+            <?php foreach($posts as $post) : ?>
+                <?= view_cell('\App\Libraries\Blog::PostItem', ['title' => $post]) ?>
+            <?php endforeach; ?>
+            
+        </div>    
 
-        </div>
-
-
-    <?php endforeach; ?>
+    </div>
 
 </div>
+
+<?= $this->endSection() ?> 

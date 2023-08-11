@@ -1,0 +1,13 @@
+arborescence CI4
+app/Views/templates/methode...
+
+Blog::PostItem => pour appeler une methode
+
+all we want to display => put in view
+the controller orders to the view to display
+
+
+
+
+acces:
+database => app => config => database
